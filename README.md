@@ -8,9 +8,11 @@ COSMOS Project
 Fidel Ramírez, Vivek Bhardwaj, Laura Arrigoni, Kin Chung Lam, Björn A. Grüning, José Villaveces, Bianca Habermann, Asifa Akhtar, and Thomas Manke. "High-resolution TADs reveal DNA sequences underlying genome organization in flies" Nature Communications, January, 15 2018, https://www.nature.com/articles/s41467-017-02525-w
 
 Figure 1: Figure I'm going to replicate.
+
 ![picture alt](Figure_1.PNG)
 
 Figure 2: Diagram of Hi-C protocol
+
 ![picture alt](Figure_2.PNG)
 
 Sergey Ulianov, Alexey A Gavrilov, and Sergey V Razin. "Nuclear Compartments, Genome Folding, and Enhancer-Promoter Communication International review of cell and molecular biology, February 2018, DOI: 10.1016/bs.ircmb.2014.11.004
