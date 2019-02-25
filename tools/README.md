@@ -1,4 +1,5 @@
-#README For Tools#
+README For Tools
+================
 
 2/23/19: Copied BWA package from my computational genomic directory (listed is code used for original download).
 code used:
