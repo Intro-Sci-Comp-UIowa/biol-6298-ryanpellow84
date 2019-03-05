@@ -17,7 +17,7 @@
 #### The below line determines how many CPUs
 #### your job will request. Only set it higher 
 #### if you need the additional memory
-#$ -pe smp 4
+#$ -pe smp 24
 ##
 #### If your job requires lots more memory,
 #### use one of the below options by removing
@@ -28,7 +28,7 @@
 #### The below option determines which queues 
 #### your job is submitted to. Multiple can be
 #### passed if separated by a comma
-#$ -q BIO-INSTR,UI,BIOLOGY,INFORMATICS 
+#$ -q UI,BIOLOGY,INFORMATICS 
 ##
 #### The below option tells the compute node to 
 #### begin execution from the same directory as
@@ -47,7 +47,7 @@
 ##  TO SET THE  ## 
 ##   JOB NAME   ##
 ##################
-#$ -N  
+#$ -N hicPlotMatrix 
 
 
 #### The below variables are a helpful way to
@@ -72,6 +72,17 @@ start=`date +%s`
 ########################################
 CMD="
 
+module load python/3.6.4
+source ~/cosmos/virenv/bin/activate
+pip install HiCExplorer
+
+hicPlotMatrix \
+-m ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_corrected.cool \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.png \
+--log1p  
+
+deactivate
+
 "
 
 
@@ -87,11 +98,16 @@ echo "**************************************"
 ##   so they are actually  executed   ##
 ########################################
 
+module load python/3.6.4
+source ~/cosmos/virenv/bin/activate
+pip install HiCExplorer
 
+hicPlotMatrix \
+-m ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_corrected.cool \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.png \
+--log1p
 
-
-
-
+deactivate
 
 
 #### The below commands print the date that your

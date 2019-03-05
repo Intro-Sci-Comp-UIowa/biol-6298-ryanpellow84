@@ -28,7 +28,7 @@
 #### The below option determines which queues 
 #### your job is submitted to. Multiple can be
 #### passed if separated by a comma
-#$ -q BIO-INSTR,UI,BIOLOGY,INFORMATICS 
+#$ -q UI,BIOLOGY,INFORMATICS 
 ##
 #### The below option tells the compute node to 
 #### begin execution from the same directory as
@@ -47,7 +47,7 @@
 ##  TO SET THE  ## 
 ##   JOB NAME   ##
 ##################
-#$ -N  
+#$ -N hicCorrectMatrix 
 
 
 #### The below variables are a helpful way to
@@ -72,8 +72,18 @@ start=`date +%s`
 ########################################
 CMD="
 
-"
+module load python/3.6.4
+source ~/cosmos/virenv/bin/activate
+pip install HiCExplorer
 
+hicCorrectMatrix correct \
+--matrix ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.cool \
+--filterThreshold -2 5 \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.h5 \
+
+deactivate
+
+"
 
 #### The below commands prints the text you
 #### assigned to the CMD variable to the log
@@ -87,10 +97,16 @@ echo "**************************************"
 ##   so they are actually  executed   ##
 ########################################
 
+module load python/3.6.4
+source ~/cosmos/virenv/bin/activate
+pip install HiCExplorer
 
+hicCorrectMatrix correct \
+--matrix ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.cool \
+--filterThreshold -2 5 \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.h5 \
 
-
-
+deactivate
 
 
 
