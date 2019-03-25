@@ -78,7 +78,8 @@ pip install HiCExplorer
 hicBuildMatrix -s \
 ~/cosmos/biol-6298-ryanpellow84/alignments/SRR3452738_1.bam \
 ~/cosmos/biol-6298-ryanpellow84/alignments/SRR3452738_2.bam \
---binSize 10000 \
+-rs ~/cosmos/biol-6298-ryanpellow84/output/dpnIIrestsites.bed \
+-seq GATC \
 -o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.cool \
 --QCfolder ~/cosmos/biol-6298-ryanpellow84/qcfolder/SRR3452738_qc
 
@@ -105,13 +106,12 @@ pip install HiCExplorer
 hicBuildMatrix -s \
 ~/cosmos/biol-6298-ryanpellow84/alignments/SRR3452738_1.bam \
 ~/cosmos/biol-6298-ryanpellow84/alignments/SRR3452738_2.bam \
---binSize 10000 \
+-rs ~/cosmos/biol-6298-ryanpellow84/output/dpnIIrestsites.bed \
+-seq GATC \
 -o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.cool \
 --QCfolder ~/cosmos/biol-6298-ryanpellow84/qcfolder/SRR3452738_qc
 
 deactivate
-
-
 
 
 

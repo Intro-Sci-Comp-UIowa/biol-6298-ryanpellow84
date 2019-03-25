@@ -79,7 +79,7 @@ pip install HiCExplorer
 hicCorrectMatrix correct \
 --matrix ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.cool \
 --filterThreshold -2 5 \
--o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.h5 \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.cool \
 
 deactivate
 
@@ -104,7 +104,7 @@ pip install HiCExplorer
 hicCorrectMatrix correct \
 --matrix ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.cool \
 --filterThreshold -2 5 \
--o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.h5 \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.cool \
 
 deactivate
 
