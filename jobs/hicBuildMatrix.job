@@ -17,7 +17,7 @@
 #### The below line determines how many CPUs
 #### your job will request. Only set it higher 
 #### if you need the additional memory
-#$ -pe smp 24
+#$ -pe smp 56
 ##
 #### If your job requires lots more memory,
 #### use one of the below options by removing
@@ -28,7 +28,7 @@
 #### The below option determines which queues 
 #### your job is submitted to. Multiple can be
 #### passed if separated by a comma
-#$ -q BIO-INSTR,UI,BIOLOGY,INFORMATICS 
+#$ -q UI,BIOLOGY,INFORMATICS 
 ##
 #### The below option tells the compute node to 
 #### begin execution from the same directory as
