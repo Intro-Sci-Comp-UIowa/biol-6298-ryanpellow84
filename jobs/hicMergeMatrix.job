@@ -17,7 +17,7 @@
 #### The below line determines how many CPUs
 #### your job will request. Only set it higher 
 #### if you need the additional memory
-#$ -pe smp 24
+#$ -pe smp 4
 ##
 #### If your job requires lots more memory,
 #### use one of the below options by removing
@@ -28,7 +28,7 @@
 #### The below option determines which queues 
 #### your job is submitted to. Multiple can be
 #### passed if separated by a comma
-#$ -q UI,BIOLOGY,INFORMATICS 
+#$ -q BIO-INSTR,UI,BIOLOGY,INFORMATICS 
 ##
 #### The below option tells the compute node to 
 #### begin execution from the same directory as
@@ -44,10 +44,10 @@
 #$ -ckpt user
 ##################
 ## DON'T FORGET ##
-##  TO SET THE  ## 
+#g  TO SET THE  ## 
 ##   JOB NAME   ##
 ##################
-#$ -N hicPlotMatrix 
+#$ -N hicMergeMatrix 
 
 
 #### The below variables are a helpful way to
@@ -71,15 +71,14 @@ start=`date +%s`
 ## so they will be printed to the log ##
 ########################################
 CMD="
-
 module load python/3.6.4
 source ~/cosmos/virenv/bin/activate
 pip install HiCExplorer
 
-hicPlotMatrix \
--m ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_merged.cool \
--o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.png \
---log1p  
+hicMergeMatrixBins \
+-m ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.cool \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_merged.cool \
+-nb 100 \
 
 deactivate
 
@@ -102,13 +101,12 @@ module load python/3.6.4
 source ~/cosmos/virenv/bin/activate
 pip install HiCExplorer
 
-hicPlotMatrix \
--m ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_merged.cool \
--o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.png \
---log1p
+hicMergeMatrixBins \
+-m ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.cool \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_merged.cool \
+-nb 100 \
 
 deactivate
-
 
 #### The below commands print the date that your
 #### job finished running to the log, and then
