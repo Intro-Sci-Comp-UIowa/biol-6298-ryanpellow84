@@ -29,12 +29,13 @@ The Hi-C data was downloaded from NCBI under the accession SRR3452738 using the 
 files. To align the Hi-C data, bwa mem was used with a relaxed gap extension penalty (-E 50) and no clipping penalties (-L 0) in order to allow reads to map 
 to distant regions in the genome. From there, HiCEplorer and co-required packages were downloaded using pip install in a virtual environment on the argon high
  performance cluster. This allowed for the bypass of root administration requirements. Subsequently the output .bam files from alignment were processed into 
-.cool file using "hicBuildMatrix" with the a default binsize of 10000 (will be changed based on restriction site in later commits), which accesses the initial
- contacts and provides quality control (images can be seen in qcfolder, but are hidden on githib due to the high resolution and consequently large file size).
- The .cool file was then diagnosed using "hicCorrectMatrix dianostic_plot" (Figure 3). Based on the diagnostics, a threshold of (-2, 5) was chosen for the 
-"hicCorrectMatrix correct" command, which outputed a corrected .cool file that was then plotted using "hicPlotMatrix" (Figure 4). This plotted all chromsomes,
- a feature that will soon be changed with further tinkering. Ultimately, this is my stopping place. In the future I looking forward to calling TADs with 
-"hicFindTADs" and plotting TAD seperation scores with "hicPlotTADs".
+.cool file using "hicBuildMatrix" with various binsizes (will hopefully be based on restriction site in later commits, there appears to be a bug, 
+in the program [broken parameter](https://github.com/deeptools/HiCExplorer/issues/361)), which accesses the initial contacts and provides quality control 
+(images can be seen in qcfolder, but are hidden on github due to the high resolution and consequently large file size). The .cool file was then diagnosed 
+using "hicCorrectMatrix dianostic_plot" (Figure 3). Based on the diagnostics, a threshold of was chosen for the "hicCorrectMatrix correct" command, which 
+outputed a corrected .cool file that was then plotted using "hicPlotMatrix" (Figure 4). Finally, in order to call TADs, "hicFindTADs" was used to ouput .bed
+files containing boundary, domain and TAD seperation scores information. These were then used to build plots via make_tracks_file (from pyGenomeTracks) and 
+hicPlotTADs. Below you will see a merged plot of of TADs similar to my goal, with varying resolution (Figure 5).
 
 ### ChIP-seq Processing ###
 
@@ -50,5 +51,6 @@ Figure 4: Test Matrix.
 
 ![picture alt](SRR3452738.png)
 
-
+Figure 5: TADs Plot.
+![picture alt](SRR3452738_1k_5k_10k.png)
 
