@@ -52,5 +52,5 @@ Figure 4: Test Matrix.
 ![picture alt](SRR3452738.png)
 
 Figure 5: TADs Plot.
-![picture alt](SRR3452738_1k_5k_10k.png)
+![picture alt](SRR3452738_plot_1k_5k_10k.png)
 
