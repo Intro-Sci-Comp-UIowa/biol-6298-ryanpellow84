@@ -17,7 +17,7 @@
 #### The below line determines how many CPUs
 #### your job will request. Only set it higher 
 #### if you need the additional memory
-#$ -pe smp 24
+#$ -pe smp 56
 ##
 #### If your job requires lots more memory,
 #### use one of the below options by removing
@@ -78,10 +78,11 @@ pip install HiCExplorer
 hicBuildMatrix -s \
 ~/cosmos/biol-6298-ryanpellow84/alignments/SRR3452738_1.bam \
 ~/cosmos/biol-6298-ryanpellow84/alignments/SRR3452738_2.bam \
--bs 10000 \
+-rs ~/cosmos/biol-6298-ryanpellow84/output/dpnIIrestsites.bed \
 -seq GATC \
--o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.cool \
---QCfolder ~/cosmos/biol-6298-ryanpellow84/qcfolder/SRR3452738_qc
+--danglingSequence GATC \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_dpnII.cool \
+--QCfolder ~/cosmos/biol-6298-ryanpellow84/qcfolder/SRR3452738_dpnII_qc
 
 deactivate
 "
@@ -106,10 +107,11 @@ pip install HiCExplorer
 hicBuildMatrix -s \
 ~/cosmos/biol-6298-ryanpellow84/alignments/SRR3452738_1.bam \
 ~/cosmos/biol-6298-ryanpellow84/alignments/SRR3452738_2.bam \
--bs 10000 \
+-rs ~/cosmos/biol-6298-ryanpellow84/output/dpnIIrestsites.bed \
 -seq GATC \
--o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738.cool \
---QCfolder ~/cosmos/biol-6298-ryanpellow84/qcfolder/SRR3452738_qc
+--danglingSequence GATC \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_dpnII.cool \
+--QCfolder ~/cosmos/biol-6298-ryanpellow84/qcfolder/SRR3452738_dpnII_qc
 
 deactivate
 

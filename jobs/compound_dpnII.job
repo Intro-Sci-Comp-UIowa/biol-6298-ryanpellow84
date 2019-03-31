@@ -1,0 +1,185 @@
+#!/bin/bash
+
+##
+#$ -S /bin/bash
+##
+#### This is an example submission script.
+#### The lines that begin with `#$` are used
+#### as arguments to qsub, while lines that
+#### start with just `##` are comments
+##
+####Send e-mail at beginning/end/suspension of job
+#$-m bes
+##
+####E-mail address to send to
+#$-M ryan-pellow@uiowa.edu
+##
+#### The below line determines how many CPUs
+#### your job will request. Only set it higher 
+#### if you need the additional memory
+#$ -pe smp 8
+##
+#### If your job requires lots more memory,
+#### use one of the below options by removing
+#### the first two `#`
+####$ -l mid_mem
+####$ -l high_mem
+##
+#### The below option determines which queues 
+#### your job is submitted to. Multiple can be
+#### passed if separated by a comma
+#$ -q BIO-INSTR,UI,BIOLOGY,INFORMATICS 
+##
+#### The below option tells the compute node to 
+#### begin execution from the same directory as
+#### where you run the qsub. Otherwise, it is 
+#### executed from '~/' -- which is where your
+#### log file will end up. 
+#$ -cwd
+##
+#### The remining options all deal with making
+#### sure your log file is in the correct format
+#$ -j y
+#$ -o $JOB_NAME.log 
+#$ -ckpt user
+##################
+## DON'T FORGET ##
+##  TO SET THE  ## 
+##   JOB NAME   ##
+##################
+#$ -N compound_dpnII
+
+
+#### The below variables are a helpful way to
+#### avoid having to repeat long file paths many
+#### times. You may need to add more variables
+#### as we do more analyses. 
+DNA_HOME=~/workspace/dna
+DATA=$DNA_HOME/data
+TOOL=/bin
+
+
+#### The below lines print the date to the log
+#### and then store it as a variable
+date
+start=`date +%s`
+
+
+########################################
+## Put the commands you are executing ##
+## inside of the " " on the next line ##
+## so they will be printed to the log ##
+########################################
+CMD="
+module load python/3.6.4
+source ~/cosmos/virenv/bin/activate
+pip install HiCExplorer
+
+hicMergeMatrixBins \
+-m ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_dpnII.cool \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_merged_dpnII.cool \
+-nb 100 \
+
+hicPlotMatrix \
+-m ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_merged_dpnII.cool \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_dpnII.png \
+--log1p
+
+hicCorrectMatrix \
+diagnostic_plot \
+--matrix ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_dpnII.cool \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_diag_dpnII.png
+
+hicCorrectMatrix correct \
+--matrix ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_dpnII.cool \
+--filterThreshold -1.2 5 \
+--chromosomes 2L 2R 3L 3R X \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_corrected_dpnII.cool
+
+hicFindTADs \
+-m ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_corrected_dpnII.cool \
+--outPrefix ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_TAD_dpnII \
+--correctForMultipleTesting fdr
+
+hicConvertFormat \
+-m ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_corrected_dpnII.cool \
+--inputFormat cool \
+--outputFormat h5 \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_corrected_dpnII.h5 \
+
+make_tracks_file --trackFiles \
+~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_corrected_dpnII.h5 \
+~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_TAD_dpnII_domains.bed \
+~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_TAD_dpnII_tad_score.bm \
+-o ~/cosmos/biol-6298-ryanpellow84/jobs/SRR3452738_tracks_dpnII.ini
+
+deactivate
+"
+
+
+
+#### The below commands prints the text you
+#### assigned to the CMD variable to the log
+echo "**************************************"
+echo "commands=$CMD"
+echo "**************************************"
+
+########################################
+## Put the commands you are executing ##
+##  in the lines below this comment,  ##
+##   so they are actually  executed   ##
+########################################
+
+module load python/3.6.4
+source ~/cosmos/virenv/bin/activate
+pip install HiCExplorer
+
+hicMergeMatrixBins \
+-m ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_dpnII.cool \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_merged_dpnII.cool \
+-nb 100 \
+
+hicPlotMatrix \
+-m ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_merged_dpnII.cool \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_dpnII.png \
+--log1p
+
+hicCorrectMatrix \
+diagnostic_plot \
+--matrix ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_dpnII.cool \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_diag_dpnII.png
+
+hicCorrectMatrix correct \
+--matrix ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_dpnII.cool \
+--filterThreshold -1.2 5 \
+--chromosomes 2L 2R 3L 3R X \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_corrected_dpnII.cool
+
+hicFindTADs \
+-m ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_corrected_dpnII.cool \
+--outPrefix ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_TAD_dpnII \
+--correctForMultipleTesting fdr
+
+hicConvertFormat \
+-m ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_corrected_dpnII.cool \
+--inputFormat cool \
+--outputFormat h5 \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_corrected_dpnII.h5 \
+
+make_tracks_file --trackFiles \
+~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_corrected_dpnII.h5 \
+~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_TAD_dpnII_domains.bed \
+~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_TAD_dpnII_tad_score.bm \
+-o ~/cosmos/biol-6298-ryanpellow84/jobs/SRR3452738_tracks_dpnII.ini
+
+deactivate
+
+#### The below commands print the date that your
+#### job finished running to the log, and then
+#### calcualtes the total amount of time it took
+#### for the job to complete
+date
+end=`date +%s`
+runtime=$((end-start))
+echo "runtime=$runtime secs"
+
