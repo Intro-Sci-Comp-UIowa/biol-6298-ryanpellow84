@@ -58,10 +58,12 @@ The ChIP-seq data had been located with various accession numbers, however I hav
 .wig files, which as the article lets on, were aligned using Bowtie2 dm3, with peaks being identified by MACS2 and motifs recognized by MEME-chip. Finally, 
 after processing they will be merged with the Hi-C data using "make_tracks_file" and "hicPlotTADs".
 
-Figure 5: Diagnostic Plot.
+Figure 3: Diagnostic Plot.
+
 ![picture alt](SRR3452738_diag_dpnII.png)
 
-Figure 6: Matrix Plot.
+Figure 4: Matrix Plot.
+
 ![picture alt](SRR3452738_dpnII.png)
 
 ## Results ##
@@ -72,9 +74,11 @@ dictinction can be made from TADs as they don't appear as filled triangles but m
 to show that increasing the binsizes can lead to the visualization of larger TADs, at the cost of masking smaller ones (Figure 6).
 
 Figure 5: TADs Plot.
+
 ![picture alt](SRR3452738_plot_dpnII.png)
 
 Figure 6: Resolution Comparison Plot.
+
 ![picture alt](SRR3452738_plot_1k_5k_10k.png)
 
 ## Discussion ##
