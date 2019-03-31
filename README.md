@@ -58,7 +58,9 @@ The ChIP-seq data had been located with various accession numbers, however I hav
 .wig files, which as the article lets on, were aligned using Bowtie2 dm3, with peaks being identified by MACS2 and motifs recognized by MEME-chip. Finally, 
 after processing they will be merged with the Hi-C data using "make_tracks_file" and "hicPlotTADs".
 
-![picture alt](SRR3452738_diag_dpnII.png "Figure 3: Diagnostic Plot.")
+Figure 3: Diagnostic Plot.
+
+![picture alt](SRR3452738_diag_dpnII.png)
 
 Figure 4: Matrix Plot.
 
