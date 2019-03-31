@@ -46,11 +46,11 @@ to distant regions in the genome. From there, HiCEplorer and co-required package
  performance cluster. This allowed for the bypass of root administration requirements. Subsequently the output .bam files from alignment were processed into a
 .cool file using "hicBuildMatrix" with various binsizes (dpnII restriction fragment, 1kb, 5kb, 10kb), which accesses the initial contacts and provides quality
  control (images can be seen in qcfolder, but are hidden on github due to the high resolution and consequently large file size). The .cool file was then 
-diagnosed using "hicCorrectMatrix dianostic_plot" (Figure 3). Based on the diagnostics, a threshold of was chosen for the "hicCorrectMatrix correct" command, 
-which outputed a corrected .cool file that was then plotted using "hicPlotMatrix" (Figure 4). Finally, in order to call TADs, "hicFindTADs" was used to ouput 
-.bed files containing boundary, domain and TAD seperation scores information. These were then used to build plots via "make_tracks_file" (from pyGenomeTracks
-and "hicPlotTADs". Ultimately, the last challenge will be to find more in-depth documentation for pyGenomeTracks and since the article fails to list their 
-parameters, there might be quite a bit of time spent exploring and tinkering.
+diagnosed using "hicCorrectMatrix dianostic_plot" (Figure 3). Based on the diagnostics, a threshold (-1.5, 5) of was chosen for the "hicCorrectMatrix correct"
+command, which outputed a corrected .cool file that was then plotted using "hicPlotMatrix" (Figure 4). Finally, in order to call TADs, "hicFindTADs" was used 
+to ouput .bed files containing boundary, domain and TAD seperation scores information. These were then used to build plots via "make_tracks_file" (from 
+pyGenomeTracks and "hicPlotTADs". Ultimately, the last challenge will be to find more in-depth documentation for pyGenomeTracks and since the article fails to
+list their parameters, there might be quite a bit of time spent exploring and tinkering.
 
 ### ChIP-seq Processing ###
 
@@ -68,10 +68,12 @@ Figure 4: Matrix Plot.
 
 ## Results ##
 
-Based on the reproduced TAD plot (Figure 5), similar results can begin to be made out. The most obvious is the small TADs (dark blue in the original and 
-yellow/red in mine) and the similarities in the TAD-speration score plots. Additionally, two looping structures at ~8075kb and ~8125kb can be seen. This 
-dictinction can be made from TADs as they don't appear as filled triangles but more of a tip of a triangle. Finally, I included a resolution comparison plot 
-to show that increasing the binsizes can lead to the visualization of larger TADs, at the cost of masking smaller ones (Figure 6).
+As mentioned earlier, the parameters used to build the tracks are nonexistent, so I'm not quite sure how to add text to the legends. With that said, the color
+red represents a greater number of contacts, while the blue represents fewer contacts. The legend is also on a logarithmic scale. Based on the reproduced TAD 
+plot (Figure 5), similar results can begin to be made out. The most obvious is the small TADs (dark blue in the original and yellow/red in mine) and the 
+similarities in the TAD-speration score plots. Additionally, two looping structures at ~8075kb and ~8125kb can be seen. This dictinction can be made from TADs
+as they don't appear as filled triangles but more of a tip of a triangle. Finally, I included a resolution comparison plot to show that increasing the 
+binsizes can lead to the visualization of larger TADs, at the cost of masking smaller ones (Figure 6).
 
 Figure 5: TADs Plot.
 
