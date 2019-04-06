@@ -77,11 +77,12 @@ pip install HiCExplorer
 
 make_tracks_file \
 --trackFiles \
-~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_corrected.h5 \
-~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_TAD_boundaries.bed \
-~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_TAD_domains.bed \
-~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_TAD_tad_score.bm \
--o ~/cosmos/biol-6298-ryanpellow84/jobs/SRR3452738_tracks.ini
+~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_corrected_dpnII.h5 \
+~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_TAD_dpnII_boundaries.bed \
+~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_TAD_dpnII_domains.bed \
+~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_TAD_dpnII_tad_score.bm \
+~/cosmos/biol-6298-ryanpellow84/refs/genes_sorted.bed \
+-o ~/cosmos/biol-6298-ryanpellow84/jobs/SRR3452738_tracks_dpnII_test.ini
 
 deactivate
 "
@@ -105,11 +106,12 @@ pip install HiCExplorer
 
 make_tracks_file \
 --trackFiles \
-~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_corrected.h5 \
-~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_TAD_boundaries.bed \
-~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_TAD_domains.bed \
-~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_TAD_tad_score.bm \
--o ~/cosmos/biol-6298-ryanpellow84/jobs/SRR3452738_tracks.ini
+~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_corrected_dpnII.h5 \
+~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_TAD_dpnII_boundaries.bed \
+~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_TAD_dpnII_domains.bed \
+~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_TAD_dpnII_tad_score.bm \
+~/cosmos/biol-6298-ryanpellow84/refs/genes_sorted.bed \
+-o ~/cosmos/biol-6298-ryanpellow84/jobs/SRR3452738_tracks_dpnII_test.ini
 
 deactivate
 

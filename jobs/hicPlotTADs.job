@@ -104,9 +104,9 @@ pip install HiCExplorer
 
 hicPlotTADs \
 --tracks \
-~/cosmos/biol-6298-ryanpellow84/jobs/SRR3452738_tracks.ini \
---region 2L:8000000-8500000 \
--o ~/cosmos/biol-6298-ryanpellow84/SRR3452738_plot.png
+~/cosmos/biol-6298-ryanpellow84/jobs/SRR3452738_tracks_dpnII.ini \
+--region 2L:8052500-8399999 \
+-o ~/cosmos/biol-6298-ryanpellow84/output/SRR3452738_plot_dpnII.png
 
 deactivate
 
