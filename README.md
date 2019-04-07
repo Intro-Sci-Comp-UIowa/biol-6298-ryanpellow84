@@ -32,9 +32,8 @@ able to show the congregation of coregulated genes, as well as the interactions 
 describe the DNA motifs that are enriched at the TAD boundaries, which by doing so would identify common insulator motifs. Note that when looking at the 
 figure, the areas of low TAD-separation score, strive to further define a TAD boundary. When this is compounded with ChIP-seq data, the presence of the 
 insulator protein Beaf32 and its cofactor CP190 are exemplified as expected. Interestingly, proposed insulator protein Su(Hw) had little coverage, while known
-mammalian insulator protein CTCF had no coverage. Finally, the paper performed ChIP-seq to demarcate between heterochromatic (H3K27me3) and euchromatic 
-(H3K36me3, H3K16ac, H3K4me1) regions. The purpose behind choosing this paper was to use it as a proof of concept, as my project seeks to create similar
-figures to describe the effect of stress on TADs.
+mammalian insulator protein CTCF had no coverage. Finally, the paper used ChIP-chip data from modENCODE to demarcate between heterochromatic (H3K27me3) and euchromatic (H3K36me3, H3K16ac, H3K4me1) regions. The purpose behind choosing this paper was to use it as a proof of concept, as my project seeks to create 
+similar figures to describe the effect of stress on TADs.
 
 ## Methods ##
 
@@ -54,9 +53,18 @@ list their parameters, there might be quite a bit of time spent exploring and ti
 
 ### ChIP-seq Processing ###
 
-The ChIP-seq data had been located with various accession numbers, however I have not gotten around to actually downloading. They are in the form of .bed and
-.wig files, which as the article lets on, were aligned using Bowtie2 dm3, with peaks being identified by MACS2 and motifs recognized by MEME-chip. Finally, 
-after processing they will be merged with the Hi-C data using "make_tracks_file" and "hicPlotTADs".
+The ChIP-seq data (CP190, CTCF, Beaf-32, and Su(Hw)) were individually downloaded fromNCBI using fastq-dump. The fastq files were aligned using Bowtie2 dm3, 
+with peaks being identified by MACS2 and converted to bigwig files using DeepTools2 "bamCompare" and "bamCoverage". Finally, after processing the files were 
+merged with the Hi-C data using "make_tracks_file" and plotted with "hicPlotTADs".
+
+### ChIP-chip Data ###
+The ChIP-chip data (H3K36me3, H3K27me3, H4K16ac and H3K4me1) were individually downloaded from modENCODE as a compressed .wig file. The each file was 
+subsequently converted to a .bw file using the UCSC binary utility function "wigToBigWig". Once converted, the files were merged into a tracks file using the
+"make_tracks_file" and plotted using "hicPlotTADs".
+
+### Gene Track ###
+The NCBI Refseq gene track was downloaded as a .bed file from UCSC and subsequently sorted using the bedtools function "sortBed" with default parameters. 
+Lastly, the file was incorporated into a tracks file using "make_tracks_files" and plotted with "hicPlotTADs".
 
 Figure 3: Diagnostic Plot.
 
