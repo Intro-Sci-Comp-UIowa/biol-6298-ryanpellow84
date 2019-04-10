@@ -53,9 +53,9 @@ list their parameters, there might be quite a bit of time spent exploring and ti
 
 ### ChIP-seq Processing ###
 
-The ChIP-seq data (CP190, CTCF, Beaf-32, and Su(Hw)) were individually downloaded fromNCBI using fastq-dump. The fastq files were aligned using Bowtie2 dm3, 
-with peaks being identified by MACS2 and converted to bigwig files using DeepTools2 "bamCompare" and "bamCoverage". Finally, after processing the files were 
-merged with the Hi-C data using "make_tracks_file" and plotted with "hicPlotTADs".
+The ChIP-seq data (CP190, CTCF, Beaf-32, and Su(Hw)) were individually downloaded fromNCBI using fastq-dump. The fastq files were aligned using Bowtie2 
+(with an index created using "bowtie2 build" and based on dm6), with peaks being identified by MACS2 and converted to bigwig files using DeepTools2 
+"bamCompare" and "bamCoverage". Finally, after processing the files were merged with the Hi-C data using "make_tracks_file" and plotted with "hicPlotTADs".
 
 ### ChIP-chip Data ###
 The ChIP-chip data (H3K36me3, H3K27me3, H4K16ac and H3K4me1) were individually downloaded from modENCODE as a compressed .wig file. The each file was 

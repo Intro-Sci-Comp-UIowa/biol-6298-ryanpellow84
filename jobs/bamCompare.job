@@ -1,0 +1,144 @@
+#!/bin/bash
+
+##
+#$ -S /bin/bash
+##
+#### This is an example submission script.
+#### The lines that begin with `#$` are used
+#### as arguments to qsub, while lines that
+#### start with just `##` are comments
+##
+####Send e-mail at beginning/end/suspension of job
+#$-m bes
+##
+####E-mail address to send to
+#$-M ryan-pellow@uiowa.edu
+##
+#### The below line determines how many CPUs
+#### your job will request. Only set it higher 
+#### if you need the additional memory
+#$ -pe smp 4
+##
+#### If your job requires lots more memory,
+#### use one of the below options by removing
+#### the first two `#`
+####$ -l mid_mem
+####$ -l high_mem
+##
+#### The below option determines which queues 
+#### your job is submitted to. Multiple can be
+#### passed if separated by a comma
+#$ -q BIO-INSTR,UI,BIOLOGY,INFORMATICS 
+##
+#### The below option tells the compute node to 
+#### begin execution from the same directory as
+#### where you run the qsub. Otherwise, it is 
+#### executed from '~/' -- which is where your
+#### log file will end up. 
+#$ -cwd
+##
+#### The remining options all deal with making
+#### sure your log file is in the correct format
+#$ -j y
+#$ -o $JOB_NAME.log 
+#$ -ckpt user
+##################
+## DON'T FORGET ##
+##  TO SET THE  ## 
+##   JOB NAME   ##
+##################
+#$ -N bamCompare 
+
+
+#### The below variables are a helpful way to
+#### avoid having to repeat long file paths many
+#### times. You may need to add more variables
+#### as we do more analyses. 
+DNA_HOME=~/workspace/dna
+DATA=$DNA_HOME/data
+TOOL=/bin
+
+
+#### The below lines print the date to the log
+#### and then store it as a variable
+date
+start=`date +%s`
+
+
+########################################
+## Put the commands you are executing ##
+## inside of the " " on the next line ##
+## so they will be printed to the log ##
+########################################
+CMD="
+source ~/cosmos/virenv/bin/activate
+
+bamCompare \
+-b1 ~/cosmos/biol-6298-ryanpellow84/data/SRR317176.sorted.bam.bai \
+-b2 ~/cosmos/biol-6298-ryanpellow84/data/SRR317188.sorted.bam.bai \
+-o ~/cosmos/biol-6298-ryanpellow84/output/CP190.bw
+
+bamCompare \
+-b1 ~/cosmos/biol-6298-ryanpellow84/data/SRR317185.sorted.bam.bai \
+-b2 ~/cosmos/biol-6298-ryanpellow84/data/SRR317188.sorted.bam.bai \
+-o ~/cosmos/biol-6298-ryanpellow84/output/Beaf-32.bw
+
+bamCompare \
+-b1 ~/cosmos/biol-6298-ryanpellow84/data/SRR317179.sorted.bam.bai \
+-b2 ~/cosmos/biol-6298-ryanpellow84/data/SRR317188.sorted.bam.bai \
+-o ~/cosmos/biol-6298-ryanpellow84/output/'Su(Hw)'.bw
+
+bamCompare \
+-b1 ~/cosmos/biol-6298-ryanpellow84/data/SRR1636769.sorted.bam.bai \
+-b2 ~/cosmos/biol-6298-ryanpellow84/data/SRR1636786.sorted.bam.bai \
+-o ~/cosmos/biol-6298-ryanpellow84/output/CTCF.bw
+
+deactivate
+"
+
+
+#### The below commands prints the text you
+#### assigned to the CMD variable to the log
+echo "**************************************"
+echo "commands=$CMD"
+echo "**************************************"
+
+########################################
+## Put the commands you are executing ##
+##  in the lines below this comment,  ##
+##   so they are actually  executed   ##
+########################################
+
+source ~/cosmos/virenv/bin/activate
+
+bamCompare \
+-b1 ~/cosmos/biol-6298-ryanpellow84/data/SRR317176.sorted.bam \
+-b2 ~/cosmos/biol-6298-ryanpellow84/data/SRR317188.sorted.bam \
+-o ~/cosmos/biol-6298-ryanpellow84/output/CP190.bw
+
+bamCompare \
+-b1 ~/cosmos/biol-6298-ryanpellow84/data/SRR317185.sorted.bam \
+-b2 ~/cosmos/biol-6298-ryanpellow84/data/SRR317188.sorted.bam \
+-o ~/cosmos/biol-6298-ryanpellow84/output/Beaf-32.bw
+
+bamCompare \
+-b1 ~/cosmos/biol-6298-ryanpellow84/data/SRR317179.sorted.bam \
+-b2 ~/cosmos/biol-6298-ryanpellow84/data/SRR317188.sorted.bam \
+-o ~/cosmos/biol-6298-ryanpellow84/output/'Su(Hw)'.bw
+
+bamCompare \
+-b1 ~/cosmos/biol-6298-ryanpellow84/data/SRR1636769.sorted.bam \
+-b2 ~/cosmos/biol-6298-ryanpellow84/data/SRR1636786.sorted.bam \
+-o ~/cosmos/biol-6298-ryanpellow84/output/CTCF.bw
+
+deactivate
+
+#### The below commands print the date that your
+#### job finished running to the log, and then
+#### calcualtes the total amount of time it took
+#### for the job to complete
+date
+end=`date +%s`
+runtime=$((end-start))
+echo "runtime=$runtime secs"
+
