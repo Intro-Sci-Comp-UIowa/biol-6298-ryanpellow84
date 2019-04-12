@@ -1,0 +1,31 @@
+To submit the job, I said to the prompt: qsub hunt.sh  /opt/sge/default/spool/argon-lc-h18-22/job_scripts/8230022
+
+I heard ARGON is real powerful! But I don't believe it. Let's see what the environment is like here...
+
+Linux argon-lc-h18-22.hpc 3.10.0-693.21.1.el7.x86_64 #1 SMP Wed Mar 7 19:03:37 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+
+Wow, it's a lot of work to just submit the job, let me take a break...
+To submit the job, I said to the prompt: qsub hunt.sh  /opt/sge/default/spool/argon-lc-h18-22/job_scripts/8230106
+
+I heard ARGON is real powerful! But I don't believe it. Let's see what the environment is like here...
+
+Linux argon-lc-h18-22.hpc 3.10.0-693.21.1.el7.x86_64 #1 SMP Wed Mar 7 19:03:37 UTC 2018 x86_64 x86_64 x86_64 GNU/Linux
+
+Wow, it's a lot of work to just submit the job, let me take a break...
+Wait, how many seconds have I rested? Let me count...
+1
+2
+3
+4
+5
+
+Now I'm recharged, let's do some work!
+
+Let's see what we have done ...
+./test/test_1.txt
+./test/test_2.txt
+./test/test_5.txt
+./test/test_4.txt
+./test/test_3.txt
+But I want to combine all of them into one file...
+And let's compress it...

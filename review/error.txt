@@ -1,0 +1,5 @@
+/opt/sge/default/spool/argon-lc-h18-22/job_scripts/8230022: line 43: 10: command not found
+
+real	0m5.002s
+user	0m0.000s
+sys	0m0.002s
