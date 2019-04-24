@@ -20,5 +20,13 @@ make_tracks job to convert the ouput of hicFindTADs into a plottable intermediat
 
 3/30/19: Editted and sucessfully ran hicBuildMatrix with restriction enzyme level resolution.
 
+4/6/19: Adjusted parameters for hicPlotTADs and tracks file
+
+4/7/19: Added ChIP-chip data to tracks file
+
+4/10/19: Created multiple jobs to analyze ChIP-seq data and added results to tracks file, produced final plot
+
+
+
 
 
