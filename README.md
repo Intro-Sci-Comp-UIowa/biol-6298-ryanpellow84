@@ -11,10 +11,7 @@ Figure 1: Figure I'm going to replicate.
 
 ![picture alt](Figure_1.PNG)
 
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
+\pagebreak
 
 Figure 2: Diagram of Hi-C protocol
 
