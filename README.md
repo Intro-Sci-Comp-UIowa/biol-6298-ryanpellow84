@@ -7,20 +7,9 @@ COSMOS Project
 
 Fidel Ramírez, Vivek Bhardwaj, Laura Arrigoni, Kin Chung Lam, Björn A. Grüning, José Villaveces, Bianca Habermann, Asifa Akhtar, and Thomas Manke. "High-resolution TADs reveal DNA sequences underlying genome organization in flies" Nature Communications, January, 15 2018, https://www.nature.com/articles/s41467-017-02525-w
 
-Figure 1: Figure I'm going to replicate.
+![picture alt](Figure_1.PNG)*Figure 1: Figure I'm going to replicate.*
 
-![picture alt](Figure_1.PNG)
-
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-
-Figure 2: Diagram of Hi-C protocol
-
-![picture alt](Figure_2.PNG)
+![picture alt](Figure_2.PNG)*Figure 2: Diagram of Hi-C protocol*
 
 Sergey Ulianov, Alexey A Gavrilov, and Sergey V Razin. "Nuclear Compartments, Genome Folding, and Enhancer-Promoter Communication International review of cell and molecular biology, February 2018, DOI: 10.1016/bs.ircmb.2014.11.004
 
@@ -43,13 +32,7 @@ mammalian insulator protein CTCF had no coverage. Finally, the paper used ChIP-c
 euchromatic (H3K36me3, H3K16ac, H3K4me1) regions. The purpose behind choosing this paper was to use it as a proof of concept, as my project seeks to create 
 similar figures to describe the effect of stress on TADs.
 
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-
+<br>
 ## Methods ##
 
 ### Hi-C Processing ###
@@ -81,32 +64,11 @@ subsequently converted to a .bw file using the UCSC binary utility function "wig
 The NCBI Refseq gene track was downloaded as a .bed file from UCSC and subsequently sorted using the bedtools function "sortBed" with default parameters. 
 Lastly, the file was incorporated into a tracks file using "make_tracks_files" and plotted with "hicPlotTADs".
 
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
 
-Figure 3: Diagnostic Plot.
+![picture alt](SRR3452738_diag_dpnII.png)*Figure 3: Diagnostic Plot.*
 
-![picture alt](SRR3452738_diag_dpnII.png)
 
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-
-Figure 4: Matrix Plot.
-
-![picture alt](SRR3452738_dpnII.png)
+![picture alt](SRR3452738_dpnII.png)*Figure 4: Matrix Plot.*
 
 ## Results and Discussion ##
 
@@ -125,20 +87,10 @@ Consequently, the MACS2 file could not be plotted (returned a no peak error) whi
 authors recieved this error from MACS2 they simply replaced the track with a line centered at zero. Although I think the move is valid, I personally believe 
 the DeepTools2 file provides a more accurate representation. However, despite this inconsistency, the reproduction seems to confirm the findings in the paper. Specifically that CTCF does not appear to play a role in TAD boundaries, regardless of chromatin state. 
 
-Figure 5: TADs Plot.
+![picture alt](SRR3452738_plot_dpnII.png)*Figure 5: TADs Plot.*
 
-![picture alt](SRR3452738_plot_dpnII.png)
 
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-&nbsp;
-
-Figure 6: Resolution Comparison Plot.
-
-![picture alt](SRR3452738_plot_1k_5k_10k.png)
+![picture alt](SRR3452738_plot_1k_5k_10k.png)*Figure 6: Resolution Comparison Plot.*
 
 ## Conclusion ##
 
