@@ -11,7 +11,12 @@ Figure 1: Figure I'm going to replicate.
 
 ![picture alt](Figure_1.PNG)
 
-<div class="pagebreak"></div>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 Figure 2: Diagram of Hi-C protocol
 
@@ -38,7 +43,12 @@ mammalian insulator protein CTCF had no coverage. Finally, the paper used ChIP-c
 euchromatic (H3K36me3, H3K16ac, H3K4me1) regions. The purpose behind choosing this paper was to use it as a proof of concept, as my project seeks to create 
 similar figures to describe the effect of stress on TADs.
 
-<div class="pagebreak"></div>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 ## Methods ##
 
@@ -71,13 +81,28 @@ subsequently converted to a .bw file using the UCSC binary utility function "wig
 The NCBI Refseq gene track was downloaded as a .bed file from UCSC and subsequently sorted using the bedtools function "sortBed" with default parameters. 
 Lastly, the file was incorporated into a tracks file using "make_tracks_files" and plotted with "hicPlotTADs".
 
-<div class="pagebreak"></div>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 Figure 3: Diagnostic Plot.
 
 ![picture alt](SRR3452738_diag_dpnII.png)
 
-<div class="pagebreak"></div>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 Figure 4: Matrix Plot.
 
@@ -104,7 +129,12 @@ Figure 5: TADs Plot.
 
 ![picture alt](SRR3452738_plot_dpnII.png)
 
-<div class="pagebreak"></div>
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
 
 Figure 6: Resolution Comparison Plot.
 
