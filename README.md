@@ -11,6 +11,11 @@ Figure 1: Figure I'm going to replicate.
 
 ![picture alt](Figure_1.PNG)
 
+&nbsp;
+&nbsp;
+&nbsp;
+&nbsp;
+
 Figure 2: Diagram of Hi-C protocol
 
 ![picture alt](Figure_2.PNG)
