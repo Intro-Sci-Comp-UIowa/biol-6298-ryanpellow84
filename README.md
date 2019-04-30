@@ -11,7 +11,7 @@ Figure 1: Figure I'm going to replicate.
 
 ![picture alt](Figure_1.PNG)
 
-\pagebreak
+-------
 
 Figure 2: Diagram of Hi-C protocol
 
@@ -37,6 +37,8 @@ insulator protein Beaf32 and its cofactor CP190 are exemplified as expected. Int
 mammalian insulator protein CTCF had no coverage. Finally, the paper used ChIP-chip data from modENCODE to demarcate between heterochromatic (H3K27me3) and 
 euchromatic (H3K36me3, H3K16ac, H3K4me1) regions. The purpose behind choosing this paper was to use it as a proof of concept, as my project seeks to create 
 similar figures to describe the effect of stress on TADs.
+
+-------
 
 ## Methods ##
 
@@ -69,9 +71,13 @@ subsequently converted to a .bw file using the UCSC binary utility function "wig
 The NCBI Refseq gene track was downloaded as a .bed file from UCSC and subsequently sorted using the bedtools function "sortBed" with default parameters. 
 Lastly, the file was incorporated into a tracks file using "make_tracks_files" and plotted with "hicPlotTADs".
 
+-------
+
 Figure 3: Diagnostic Plot.
 
 ![picture alt](SRR3452738_diag_dpnII.png)
+
+-------
 
 Figure 4: Matrix Plot.
 
@@ -97,6 +103,8 @@ the DeepTools2 file provides a more accurate representation. However, despite th
 Figure 5: TADs Plot.
 
 ![picture alt](SRR3452738_plot_dpnII.png)
+
+-------
 
 Figure 6: Resolution Comparison Plot.
 
