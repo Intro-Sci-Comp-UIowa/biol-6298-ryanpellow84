@@ -32,7 +32,8 @@ able to show the congregation of coregulated genes, as well as the interactions 
 describe the DNA motifs that are enriched at the TAD boundaries, which by doing so would identify common insulator motifs. Note that when looking at the 
 figure, the areas of low TAD-separation score, strive to further define a TAD boundary. When this is compounded with ChIP-seq data, the presence of the 
 insulator protein Beaf32 and its cofactor CP190 are exemplified as expected. Interestingly, proposed insulator protein Su(Hw) had little coverage, while known
-mammalian insulator protein CTCF had no coverage. Finally, the paper used ChIP-chip data from modENCODE to demarcate between heterochromatic (H3K27me3) and euchromatic (H3K36me3, H3K16ac, H3K4me1) regions. The purpose behind choosing this paper was to use it as a proof of concept, as my project seeks to create 
+mammalian insulator protein CTCF had no coverage. Finally, the paper used ChIP-chip data from modENCODE to demarcate between heterochromatic (H3K27me3) and 
+euchromatic (H3K36me3, H3K16ac, H3K4me1) regions. The purpose behind choosing this paper was to use it as a proof of concept, as my project seeks to create 
 similar figures to describe the effect of stress on TADs.
 
 ## Methods ##
@@ -74,14 +75,22 @@ Figure 4: Matrix Plot.
 
 ![picture alt](SRR3452738_dpnII.png)
 
-## Results ##
+## Results and Discussion ##
 
-As mentioned earlier, the parameters used to build the tracks are nonexistent, so I'm not quite sure how to add text to the legends. With that said, the color
-red represents a greater number of contacts, while the blue represents fewer contacts. The legend is also on a logarithmic scale. Based on the reproduced TAD 
-plot (Figure 5), similar results can begin to be made out. The most obvious is the small TADs (dark blue in the original and yellow/red in mine) and the 
-similarities in the TAD-speration score plots. Additionally, two looping structures at ~8075kb and ~8125kb can be seen. This dictinction can be made from TADs
-as they don't appear as filled triangles but more of a tip of a triangle. Finally, I included a resolution comparison plot to show that increasing the 
-binsizes can lead to the visualization of larger TADs, at the cost of masking smaller ones (Figure 6).
+As mentioned earlier, the parameters used to build the tracks are nonexistent, so I ended up picking the color schemes that looked similar or what I thought 
+looked best. With that said, the color red represents a greater number of contacts, while the blue represents fewer contacts. The legend is also on a 
+logarithmic scale. Based on the reproduced TAD plot (Figure 5), similar results can begin to be made out. The most obvious is the small TADs (dark blue in 
+the original and yellow/red in mine) and the similarities in the TAD-speration score plots. Additionally, two looping structures at ~8075kb and ~8125kb can 
+be seen. This dictinction can be made from TADs as they don't appear as filled triangles but more of a tip of a triangle. In order to visualize larger TADs, I
+ included a resolution comparison plot to show that increasing the binsizes can lead to the visualization of larger TADs, at the cost of masking smaller ones 
+(Figure 6). The one thing I was unable to reproduce was the chromatin states track. The finished track is available along with the details of the pipeline and
+ histones used, but the raw histone data unavailabe. As a result, I chose to not include the pre-made track because I was unable to even attempt its 
+reproduction. Finally, the ChIP-seq and ChIP-chip data turned out nearly identical in appearence to the paper, with the exception being that it appears that 
+the CTCF has more noise. I believe the reason for this additional noise stems from the anaysis tool. MACS2 creates a file of discrete peak locations, whereas 
+DeepTools2 create a file with peaks on a continous scale. Thus, MACS2 returned nothing for this specific region, while DeepTools2 returned noise. 
+Consequently, the MACS2 file could not be plotted (returned a no peak error) while the DeepTools2 file could. With that said, my intuition is that when the 
+authors recieved this error from MACS2 they simply replaced the track with a line centered at zero. Although I think the move is valid, I personally believe 
+the DeepTools2 file provides a more accurate representation. However, despite this inconsistency, the reproduction seems to confirm the findings in the paper. Specifically that CTCF does not appear to play a role in TAD boundaries, regardless of chromatin state. 
 
 Figure 5: TADs Plot.
 
@@ -91,22 +100,28 @@ Figure 6: Resolution Comparison Plot.
 
 ![picture alt](SRR3452738_plot_1k_5k_10k.png)
 
-## Discussion ##
+## Conclusion ##
 
-Reproduction of the figure has led to a couple of significant road blocks, but ultimately to a vary similar figure. The roadblocks that hindered 
-reproducability came in the form of argon not cooperating and a bug in the "hicBuildMatrix" function. The argon problem was on my end, as I needed to use 
-argon because the max vmem required to run "hicBuildMatrix" was rountinely over 67G, but I didn't have root access to allow updates to required packages. To 
-circumvent this I discovered that I could create a python virtual environment within argon that allows the user to download and install the latest versions of
-any python package. Conveniantly, this tool functions in both the login node and submitted job files. The second big hurdle occured from a bug in the 
-"hicBuildMatrix" function which prevented me from executing the function with restriction enzyme level resolution. Fortunately, on March 20th, the cohort 
-resposible for hicExplorer released a patched version of the function. However, the patched version was only a standalone and couldn't be installed via my 
-aforementioned tactic. This bogged me down for about a week until I discovered that within my virtual environment I had direct access to the code and could 
-manually edit the bugged function. Consequently, I browsed the code, found the bug, corrected it and everything ran flawlessly. 
+### Helpful Robust Tools ###
+* Python virtual environment within argon
+	* Allowed me to download required packages without root permissions
+	* Allowed for the editing of the underlying code
 
-Finally, the plots I've been producing seem to coordinate with the plots produced in the article, with the exception of the TAD-seperation score plot. The 
-article's appears more rigid then the one I'm able to produce. I have a hunch that its because my TAD boundary calling was based on false discovery rate 
-(which was the programs default) instead  of a Bonferroni corrected p-value (which the article refers too). This should be a relatively simple test, which hopefully will address this issue.
-
+### Challenges with Reproducability ###
+* Restriction enzyme level resolution
+	* Necessary for high resolution TADs
+	* Bug in the code that prevented proper functionality, was only fixed via a patched version released by authors and incorporated by hand
+* make_tracks_file
+	* This function has no parameters and sporatic documentation
+	* Ended up manually editting the .ini file to acheive the desired formatting
+* Gene tracks
+	* Turns out the gene track is actually 20 tracks long, was cropped to 5
+	* In a different order because I used the reference dm6 and they used dm3 
+* Peak Plotting
+	* MACS2 produces discrete plots
+* Chromatin States Track
+	* Final product is available, but data used and means are not
+ 
 
 
 
